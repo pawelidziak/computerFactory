@@ -1,29 +1,45 @@
-import { Injectable } from '@angular/core';
-import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-import {PIZZA_SIZE} from './fake-db';
+import {Injectable} from '@angular/core';
+import {
+  HttpRequest,
+  HttpResponse,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HTTP_INTERCEPTORS
+} from '@angular/common/http';
+import {Observable, of, throwError} from 'rxjs';
+import {delay, mergeMap, materialize, dematerialize} from 'rxjs/operators';
+import {PIZZA_MENU, PIZZA_SIZE} from './fake-db';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
 
-  constructor() { }
+  constructor() {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     // wrap in delayed observable to simulate server api call
     return of(null).pipe(mergeMap(() => {
 
-      // get users
-      if (request.url.endsWith('/pizza-size') && request.method === 'GET') {
-
-        if(PIZZA_SIZE.length){
-          return of(new HttpResponse({ status: 200, body: PIZZA_SIZE }));
-        }else {
+      // GET PIZZA MENU
+      if (request.url.endsWith('/pizza-menu') && request.method === 'GET') {
+        if (PIZZA_MENU.length) {
+          return of(new HttpResponse({status: 200, body: PIZZA_MENU}));
+        } else {
           // return 404
-          return throwError({ error: { message: 'Not found' } });
+          return throwError({error: {message: 'Not found'}});
         }
+      }
 
+      // GET PIZZA SIZE
+      if (request.url.endsWith('/pizza-size') && request.method === 'GET') {
+        if (PIZZA_SIZE.length) {
+          return of(new HttpResponse({status: 200, body: PIZZA_SIZE}));
+        } else {
+          // return 404
+          return throwError({error: {message: 'Not found'}});
+        }
       }
 
       // pass through any requests not handled above
