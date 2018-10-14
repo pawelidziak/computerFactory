@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {fakeBackendProvider} from './core/fake-backend/fake-backend.interceptor';
 import {DashboardModule} from './components/dashboard/dashboard.module';
 import {LogService} from './core/log.service';
+import {LogStation} from './classes/observer/log-station';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {LogService} from './core/log.service';
 
     // provider used to create fake backend
     fakeBackendProvider,
-    LogService
+    LogService,
+    LogStation
   ],
   bootstrap: [AppComponent]
 })

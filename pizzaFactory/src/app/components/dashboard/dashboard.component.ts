@@ -1,44 +1,43 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Computer} from '../../classes/Computer';
-import {AMDFactory} from '../../classes/factories/AMD-factory';
-import {IntelFactory} from '../../classes/factories/intel-factory';
+import {GamingFactory} from '../../classes/factories/gaming-factory';
+import {BusinessFactory} from '../../classes/factories/business-factory';
+import {LogStation} from '../../classes/observer/log-station';
+import {Observer} from '../../classes/observer/observer';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit, OnDestroy{
   private subscriptions: any[] = [];
 
   public computer: Computer;
 
-  constructor(private http: HttpClient) {
+  public log: LogStation;
+
+  constructor() {
   }
 
   ngOnInit() {
-    const one = new Computer(1, new AMDFactory());
-    const two = new Computer(2, new IntelFactory())
-
+    this.log = new LogStation();
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  public createAMDComputer(): void {
-    this.computer = new Computer(this.generateSerialNumber(), new AMDFactory());
+  public createGamingSet(): void {
+    this.computer = new GamingFactory().getComputer();
+    console.log(this.computer.getDescription() + ' ' + this.computer.getPrice());
   }
 
-  public createIntelComputer(): void {
-    this.computer = new Computer(this.generateSerialNumber(), new IntelFactory());
+  public createBusinessSet(): void {
+    this.computer = new BusinessFactory().getComputer();
+    console.log(this.computer.getDescription() + ' ' + this.computer.getPrice());
   }
 
 
-  private generateSerialNumber(): number {
-    const max = 10000;
-    const min = 0;
-    return  Math.floor(Math.random() * (max - min) + min);
-  }
 }

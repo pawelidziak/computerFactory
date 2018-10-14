@@ -1,38 +1,21 @@
-import {Processor} from './elements/processor';
-import {GraphicsCard} from './elements/graphics-card';
-import {ComputerFactory} from './factories/computer-factory';
+import {ComputerType} from './computer-type';
+import {LogStation} from './observer/log-station';
 
-export class Computer {
-  private serialNumber: number;
-  private processor: Processor;
-  private graphicsCard: GraphicsCard;
+export abstract class Computer {
+  serialNumver: number;
+  type: ComputerType = ComputerType.UNKNOWN;
+  log: LogStation;
 
-  private totalPrice = 0;
-
-  constructor(serialNumber: number, factory: ComputerFactory) {
-    this.serialNumber = serialNumber;
-    this.processor = factory.getProcessor();
-    this.graphicsCard = factory.getGraphicsCard();
-    this.process();
+  constructor() {
+    this.log = LogStation.getInstance();
   }
 
-  private process() {
-    console.log(`Starting to assemble a computer with a serial number: ${this.serialNumber}`);
-    this.processor.process();
-    this.graphicsCard.process();
-    console.log(`End of computer assembly with a serial number: ${this.serialNumber}`);
+  getType(): ComputerType {
+    return this.type;
   }
 
-  public toString = () : string => {
-    return `Computer (serial number: ${this.serialNumber})`;
-  };
+  abstract getPrice(): number;
 
-  public getTotalPrice(): number {
-    console.log('dweew ' + this.processor.getPrice())
-    this.totalPrice += this.processor.getPrice();
+  abstract getDescription(): string;
 
-    // this.totalPrice += this.graphicsCard.getPrice();
-
-    return this.totalPrice;
-  }
 }

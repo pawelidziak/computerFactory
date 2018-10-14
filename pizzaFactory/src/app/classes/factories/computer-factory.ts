@@ -1,7 +1,8 @@
-import {Processor} from '../elements/processor';
-import {GraphicsCard} from '../elements/graphics-card';
+import {Computer} from '../Computer';
 
-export interface ComputerFactory {
-  getProcessor(): Processor;
-  getGraphicsCard(): GraphicsCard;
+export abstract class ComputerFactory {
+  protected computer: Computer;
+
+  abstract addAccessories(): void;
+  abstract getComputer(): Computer;
 }
