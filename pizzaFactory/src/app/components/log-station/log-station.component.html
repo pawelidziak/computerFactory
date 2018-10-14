@@ -1,0 +1,14 @@
+<section class="section-log-station">
+  <mat-list class="log-container">
+    <h3 mat-subheader class="log-header">LOGS</h3>
+    <mat-list-item *ngFor="let log of logs.slice().reverse()">
+      <div mat-line class="one-log">
+        <code class="log-info">[log]</code>
+        <div class="one-log-inner">
+          <span class="log-text">{{log}}</span>
+          <span class="log-date">{{log}}</span>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</section>

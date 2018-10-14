@@ -7,8 +7,7 @@ export class LogStation implements Subject {
   private static instance: LogStation;
 
   setLog(log: string): void {
-    console.log('ustawiam log ' + log);
-    this.logs += `\n${log}`;
+    this.logs = log;
     this.notifyObservers();
   }
 

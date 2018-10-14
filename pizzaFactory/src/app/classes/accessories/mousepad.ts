@@ -7,7 +7,7 @@ export class Mousepad extends ComputerAccessory {
     super();
     this.computer = computer;
     this.price = 20;
-    this.computer.log.setLog(`Mousepad (${this.price})`);
+    this.computer.log.setLog(`Adding mousepad (${this.price})`);
   }
 
   getPrice(): number {

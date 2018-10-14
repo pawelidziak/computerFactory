@@ -1,0 +1,49 @@
+.section-log-station {
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+}
+
+.log-container {
+  height: 250px;
+  overflow: auto;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
+  @media screen and (min-width: 1100px) {
+    height: 500px;
+    min-width: 500px;
+  }
+}
+
+.log-header {
+  background-color: rgba(0, 0, 0, .20);
+}
+
+.mat-list-item {
+  &:hover {
+    background-color: rgba(0, 0, 0, .10);
+  }
+}
+
+.one-log {
+  color: rgba(0, 0, 0, .54);
+  display: flex !important;
+  align-items: center;
+}
+
+.log-info {
+  margin-right: 24px;
+  font-size: 11px;
+}
+
+.one-log-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-text {
+  font-size: 13px;
+}
+
+.log-date {
+  font-size: 11px;
+}

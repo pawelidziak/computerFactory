@@ -6,7 +6,7 @@ export class GamingComputer extends Computer {
   constructor() {
     super();
     this.type = ComputerType.GAMING;
-    this.log.setLog('Gaming computer.');
+    this.log.setLog('Creating gaming computer...');
   }
 
   getPrice(): number {

@@ -7,7 +7,7 @@ export class DockingStation extends ComputerAccessory {
     super();
     this.price = 1000;
     this.computer = computer;
-    this.computer.log.setLog(`Docking station (${this.price})`);
+    this.computer.log.setLog(`Adding docking station (${this.price})`);
   }
 
   getPrice(): number {

@@ -6,7 +6,7 @@ export class BusinessComputer extends Computer {
   constructor() {
     super();
     this.type = ComputerType.BUSINESS;
-    this.log.setLog('Business computer.');
+    this.log.setLog('Creating business computer...');
   }
 
   getPrice(): number {
