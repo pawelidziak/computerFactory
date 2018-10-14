@@ -1,20 +1,30 @@
 import {Injectable} from '@angular/core';
 import {
-  HttpRequest,
-  HttpResponse,
-  HttpHandler,
+  HTTP_INTERCEPTORS,
   HttpEvent,
+  HttpHandler,
   HttpInterceptor,
-  HTTP_INTERCEPTORS
+  HttpRequest,
+  HttpResponse
 } from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
-import {delay, mergeMap, materialize, dematerialize} from 'rxjs/operators';
-import {PIZZA_MENU, PIZZA_SIZE} from './fake-db';
+import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
+import {PIZZA_SIZE} from './fake-db';
+import {DockingStation} from '../../classes/accessories/docking-station';
+import {UnknownComputer} from '../../classes/unknown-computer';
+import {Keyboard} from '../../classes/accessories/keyboard';
+import {Monitor} from '../../classes/accessories/monitor';
+import {Mouse} from '../../classes/accessories/mouse';
+import {AccessoryDto} from './accessory-dto';
+import {AccessoryType} from './accessory.type';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
 
+  private computerAccessories: AccessoryDto[] = [];
+
   constructor() {
+    this.createAccessories();
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -22,20 +32,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     // wrap in delayed observable to simulate server api call
     return of(null).pipe(mergeMap(() => {
 
-      // GET PIZZA MENU
-      if (request.url.endsWith('/pizza-menu') && request.method === 'GET') {
-        if (PIZZA_MENU.length) {
-          return of(new HttpResponse({status: 200, body: PIZZA_MENU}));
-        } else {
-          // return 404
-          return throwError({error: {message: 'Not found'}});
-        }
-      }
-
-      // GET PIZZA SIZE
-      if (request.url.endsWith('/pizza-size') && request.method === 'GET') {
-        if (PIZZA_SIZE.length) {
-          return of(new HttpResponse({status: 200, body: PIZZA_SIZE}));
+      if (request.url.endsWith('/computer-accessories') && request.method === 'GET') {
+        if (this.computerAccessories.length) {
+          return of(new HttpResponse({status: 200, body: this.computerAccessories}));
         } else {
           // return 404
           return throwError({error: {message: 'Not found'}});
@@ -52,6 +51,22 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       .pipe(delay(500))
       .pipe(dematerialize());
   }
+
+
+  private createAccessories() {
+    const comp = new UnknownComputer();
+    const dockingStation = new DockingStation(comp);
+    const keyboard = new Keyboard(comp);
+    const monitor = new Monitor(comp);
+    const mouse = new Mouse(comp);
+
+    this.computerAccessories.push({text: dockingStation.getDescription(), accessory: AccessoryType.DOCKING_STATION});
+    this.computerAccessories.push({text: keyboard.getDescription(), accessory: AccessoryType.KEYBOARD});
+    this.computerAccessories.push({text: monitor.getDescription(), accessory: AccessoryType.MONITOR});
+    this.computerAccessories.push({text: mouse.getDescription(), accessory: AccessoryType.MOUSE});
+
+    console.log(this.computerAccessories);
+  }
 }
 
 export let fakeBackendProvider = {
@@ -60,3 +75,4 @@ export let fakeBackendProvider = {
   useClass: FakeBackendInterceptor,
   multi: true
 };
+

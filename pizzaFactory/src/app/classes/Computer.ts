@@ -3,7 +3,7 @@ import {LogStation} from './observer/log-station';
 
 export abstract class Computer {
   serialNumver: number;
-  type: ComputerType = ComputerType.UNKNOWN;
+  type: ComputerType;
   log: LogStation;
 
   constructor() {

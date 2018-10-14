@@ -7,7 +7,7 @@ export class DockingStation extends ComputerAccessory {
     super();
     this.price = 1000;
     this.computer = computer;
-    this.computer.log.setLog(`Adding docking station (${this.price})`);
+    setTimeout(() => this.computer.log.setLog(`Adding ${this.getDescription()}`), 1000);
   }
 
   getPrice(): number {
@@ -15,6 +15,6 @@ export class DockingStation extends ComputerAccessory {
   }
 
   getDescription(): string {
-    return `${this.computer.getDescription()}docking station (1000)\n`;
+    return `Docking station (${this.price} PLN)`;
   }
 }

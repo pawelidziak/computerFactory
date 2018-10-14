@@ -15,7 +15,7 @@ export class Mousepad extends ComputerAccessory {
   }
 
   getDescription(): string {
-    return `${this.computer.getDescription()}mousepad (20)\n`;
+    return `Mousepad (${this.price} PLN)`;
   }
 
 }

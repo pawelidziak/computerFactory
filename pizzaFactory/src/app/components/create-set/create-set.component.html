@@ -1,0 +1,28 @@
+<div class="create-set-container">
+  <header class="create-set-header">
+    <h3>CREATE SET</h3>
+  </header>
+  <div class="create-set-content">
+    <mat-form-field appearance="outline">
+      <mat-label>Select computer type</mat-label>
+      <mat-select [(value)]="selectedComputerType" (selectionChange)="createNewComputer()">
+        <mat-option *ngFor="let type of computerTypes" [value]="type">{{type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="accessories">
+      <h3>Add accessory</h3>
+      <button mat-button
+              color="primary"
+              *ngFor="let accessory of computerAccessories"
+              [disabled]="computer.type === 'UNKNOWN'"
+              (click)="addAccessory(accessory.accessory)">
+        {{accessory.text}}
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<span>
+</span>

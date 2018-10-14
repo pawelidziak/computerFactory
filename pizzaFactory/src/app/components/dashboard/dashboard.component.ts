@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterContentInit{
 
   ngOnInit() {
     this.log = new LogStation();
+
   }
 
   ngOnDestroy() {

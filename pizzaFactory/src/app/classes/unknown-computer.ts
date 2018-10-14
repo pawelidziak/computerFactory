@@ -6,7 +6,6 @@ export class UnknownComputer extends Computer {
   constructor() {
     super();
     this.type = ComputerType.UNKNOWN;
-    this.log.setLog('Unknown computer...');
   }
 
   getPrice(): number {
@@ -14,7 +13,7 @@ export class UnknownComputer extends Computer {
   }
 
   getDescription(): string {
-    return 'Gaming computer (0)\n';
+    return '';
   }
 
 }

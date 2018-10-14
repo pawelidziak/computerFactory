@@ -7,7 +7,7 @@ export class Monitor extends ComputerAccessory {
     super();
     this.computer = computer;
     this.price = 500;
-    this.computer.log.setLog(`Adding monitor (${this.price})`);
+    setTimeout(() => this.computer.log.setLog(`Adding ${this.getDescription()}`), 3000);
   }
 
   getPrice(): number {
@@ -15,6 +15,6 @@ export class Monitor extends ComputerAccessory {
   }
 
   getDescription(): string {
-    return `${this.computer.getDescription()}monitor (500)\n`;
+    return `Monitor (${this.price} PLN)`;
   }
 }

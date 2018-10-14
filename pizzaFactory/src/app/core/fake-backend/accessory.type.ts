@@ -1,0 +1,6 @@
+export enum AccessoryType {
+  DOCKING_STATION = 'DOCKING_STATION',
+  KEYBOARD = 'KEYBOARD',
+  MONITOR = 'MONITOR',
+  MOUSE = 'MOUSE'
+}

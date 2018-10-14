@@ -1,8 +1,9 @@
 <section class="section-dashboard" >
 
   <div class="left">
-    <app-factories [computer]="computer"></app-factories>
-    <app-create-set [computer]="computer"></app-create-set>
+    <span>HYM: {{computer.getPrice()}}</span>
+    <app-factories [(computer)]="computer"></app-factories>
+    <app-create-set [(computer)]="computer"></app-create-set>
   </div>
 
   <div class="right">

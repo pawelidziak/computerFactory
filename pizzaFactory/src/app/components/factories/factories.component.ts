@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {GamingFactory} from '../../classes/factories/gaming-factory';
 import {BusinessFactory} from '../../classes/factories/business-factory';
 import {Computer} from '../../classes/Computer';
@@ -8,8 +8,12 @@ import {Computer} from '../../classes/Computer';
   templateUrl: './factories.component.html',
   styleUrls: ['./factories.component.scss']
 })
-export class FactoriesComponent implements OnInit {
+export class FactoriesComponent implements OnInit, OnChanges {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.computerChange.emit(this.computer);
+  }
   @Input() computer: Computer;
+  @Output() computerChange = new EventEmitter();
 
   constructor() { }
 
@@ -19,11 +23,11 @@ export class FactoriesComponent implements OnInit {
 
   public createGamingSet(): void {
     this.computer = new GamingFactory().getComputer();
-    // console.log(this.computer.getDescription() + ' ' + this.computer.getPrice());
+    this.computerChange.emit(this.computer);
   }
 
   public createBusinessSet(): void {
     this.computer = new BusinessFactory().getComputer();
-    // console.log(this.computer.getDescription() + ' ' + this.computer.getPrice());
+    this.computerChange.emit(this.computer);
   }
 }
