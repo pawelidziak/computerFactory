@@ -9,7 +9,7 @@ export class BusinessFactory extends ComputerFactory {
   constructor() {
     super();
     this.computer = new BusinessComputer();
-    this.addAccessories();
+    setTimeout(()=> this.addAccessories(), 3000);
   }
 
   getComputer(): Computer {
@@ -17,7 +17,7 @@ export class BusinessFactory extends ComputerFactory {
   }
 
   addAccessories(): void {
-    this.computer = new Mouse(this.computer);
+    setTimeout(()=> this.computer = new Mouse(this.computer), 1000);
     this.computer = new Keyboard(this.computer);
   }
 }

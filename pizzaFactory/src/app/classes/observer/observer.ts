@@ -1,3 +1,5 @@
+import {OneLog} from './log-station';
+
 export interface Observer {
-  update(log: string): void;
+  update(log: OneLog): void;
 }

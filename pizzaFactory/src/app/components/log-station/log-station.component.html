@@ -5,8 +5,8 @@
       <div mat-line class="one-log">
         <code class="log-info">[log]</code>
         <div class="one-log-inner">
-          <span class="log-text">{{log}}</span>
-          <span class="log-date">{{log}}</span>
+          <span class="log-text">{{log.text}}</span>
+          <span class="log-date">{{log.date | date: 'h:mm:ss'}}</span>
         </div>
       </div>
     </mat-list-item>

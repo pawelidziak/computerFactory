@@ -1,13 +1,21 @@
 import {Subject} from './subject';
 import {Observer} from './observer';
 
+export interface OneLog {
+  text: string;
+  date: Date;
+}
+
 export class LogStation implements Subject {
-  private logs: string;
+  private log: OneLog;
   private observers: Observer[] = [];
   private static instance: LogStation;
 
   setLog(log: string): void {
-    this.logs = log;
+    this.log = {
+      text: log,
+      date: new Date()
+    };
     this.notifyObservers();
   }
 
@@ -22,11 +30,11 @@ export class LogStation implements Subject {
 
   notifyObservers() {
     for (let observer of this.observers) {
-      observer.update(this.logs);
+      observer.update(this.log);
     }
   }
 
-  public static getInstance(): LogStation{
+  public static getInstance(): LogStation {
     return this.instance || (this.instance = new this());
   }
 

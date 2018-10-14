@@ -9,7 +9,7 @@ export class GamingFactory extends ComputerFactory {
   constructor() {
     super();
     this.computer = new GamingComputer();
-    this.addAccessories();
+    setTimeout(()=> this.addAccessories(), 3000);
   }
 
   getComputer(): Computer {
@@ -17,7 +17,7 @@ export class GamingFactory extends ComputerFactory {
   }
 
   addAccessories(): void {
-    this.computer = new DockingStation(this.computer);
+    setTimeout(()=> this.computer = new DockingStation(this.computer), 1000);
     this.computer = new Monitor(this.computer);
   }
 

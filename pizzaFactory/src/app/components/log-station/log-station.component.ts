@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observer} from '../../classes/observer/observer';
 import {Subject} from '../../classes/observer/subject';
-import {LogStation} from '../../classes/observer/log-station';
+import {LogStation, OneLog} from '../../classes/observer/log-station';
 
 @Component({
   selector: 'app-log-station',
@@ -10,7 +10,7 @@ import {LogStation} from '../../classes/observer/log-station';
 })
 export class LogStationComponent implements OnInit, Observer {
   private subject: Subject;
-  public logs: string[] = [];
+  public logs: OneLog[] = [];
 
   constructor() {
     this.subject = LogStation.getInstance();
@@ -20,7 +20,7 @@ export class LogStationComponent implements OnInit, Observer {
   ngOnInit() {
   }
 
-  update(log: string): void {
+  update(log: OneLog): void {
     this.logs.push(log);
   }
 
