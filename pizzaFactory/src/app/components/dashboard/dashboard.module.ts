@@ -2,8 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {DashboardComponent} from './dashboard.component';
-import {MatButtonModule} from '@angular/material';
 import {LogStationModule} from '../log-station/log-station.module';
+import {FactoriesModule} from '../factories/factories.module';
+import {CreateSetModule} from '../create-set/create-set.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,10 @@ import {LogStationModule} from '../log-station/log-station.module';
   imports: [
     CommonModule,
     HttpClientModule,
-    LogStationModule,
 
-    MatButtonModule,
+    LogStationModule,
+    FactoriesModule,
+    CreateSetModule
   ],
   exports: [
     DashboardComponent

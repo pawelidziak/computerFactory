@@ -1,15 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterContentInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {Computer} from '../../classes/Computer';
-import {GamingFactory} from '../../classes/factories/gaming-factory';
-import {BusinessFactory} from '../../classes/factories/business-factory';
 import {LogStation} from '../../classes/observer/log-station';
+import {UnknownComputer} from '../../classes/unknown-computer';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy{
+export class DashboardComponent implements OnInit, OnDestroy, AfterContentInit{
   private subscriptions: any[] = [];
 
   public computer: Computer;
@@ -27,15 +26,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  public createGamingSet(): void {
-    this.computer = new GamingFactory().getComputer();
-    // console.log(this.computer.getDescription() + ' ' + this.computer.getPrice());
+  ngAfterContentInit(): void {
+    this.computer = new UnknownComputer();
   }
-
-  public createBusinessSet(): void {
-    this.computer = new BusinessFactory().getComputer();
-    // console.log(this.computer.getDescription() + ' ' + this.computer.getPrice());
-  }
-
-
 }
