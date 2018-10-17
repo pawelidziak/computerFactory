@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pizzaFactory": {
+    "computerFactory": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pizzaFactory",
+            "outputPath": "dist/computerFactory",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -56,18 +56,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pizzaFactory:build"
+            "browserTarget": "computerFactory:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pizzaFactory:build:production"
+              "browserTarget": "computerFactory:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pizzaFactory:build"
+            "browserTarget": "computerFactory:build"
           }
         },
         "test": {
@@ -102,7 +102,7 @@
         }
       }
     },
-    "pizzaFactory-e2e": {
+    "computerFactory-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -110,11 +110,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pizzaFactory:serve"
+            "devServerTarget": "computerFactory:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pizzaFactory:serve:production"
+              "devServerTarget": "computerFactory:serve:production"
             }
           }
         },
@@ -130,5 +130,5 @@
       }
     }
   },
-  "defaultProject": "pizzaFactory"
+  "defaultProject": "computerFactory"
 }
