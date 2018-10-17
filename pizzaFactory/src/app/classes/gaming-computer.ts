@@ -14,7 +14,7 @@ export class GamingComputer extends Computer {
   }
 
   getDescription(): string {
-    return 'Gaming computer (2000)\n';
+    return `Gaming computer (${this.getPrice()} PLN)`;
   }
 
 }

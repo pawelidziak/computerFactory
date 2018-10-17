@@ -7,7 +7,7 @@ export class Mouse extends ComputerAccessory {
     super();
     this.computer = computer;
     this.price = 100;
-    setTimeout(() => this.computer.log.setLog(`Adding ${this.getDescription()}`), 4000);
+    setTimeout(() => this.computer.log.setLog(`Adding mouse`), 4000);
   }
 
   getPrice(): number {
@@ -15,6 +15,6 @@ export class Mouse extends ComputerAccessory {
   }
 
   getDescription(): string {
-    return `Mouse (${this.price} PLN)`;
+    return `${this.computer.getDescription()} Mouse (${this.price} PLN)`;
   }
 }

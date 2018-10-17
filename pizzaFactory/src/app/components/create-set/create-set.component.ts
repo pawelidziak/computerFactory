@@ -22,17 +22,16 @@ export class CreateSetComponent implements OnInit, OnDestroy {
   @Input() computer: Computer;
   @Output() computerChange = new EventEmitter();
 
-  selectedComputerType = ComputerType.UNKNOWN;
-  computerTypes = [
+  public selectedComputerType = ComputerType.UNKNOWN;
+  public computerTypes = [
     'UNKNOWN',
     'BUSINESS',
     'GAMING'
   ];
 
-  computerAccessories: any = [];
+  public computerAccessories: any = [];
 
   constructor(private http: HttpClient) {
-    console.log(ComputerType)
   }
 
   ngOnInit() {
@@ -55,10 +54,10 @@ export class CreateSetComponent implements OnInit, OnDestroy {
   public createNewComputer(): void {
     this.computer = null;
     switch (this.selectedComputerType) {
-      case ComputerType.BUSINESS:
+      case ComputerType.GAMING:
         this.computer = new GamingComputer();
         break;
-      case ComputerType.GAMING:
+      case ComputerType.BUSINESS:
         this.computer = new BusinessComputer();
         break;
       case ComputerType.UNKNOWN:
@@ -68,7 +67,7 @@ export class CreateSetComponent implements OnInit, OnDestroy {
     this.emitComputerChange();
   }
 
-  addAccessory(accessoryType: AccessoryType): void {
+  public addAccessory(accessoryType: AccessoryType): void {
     switch (accessoryType) {
       case AccessoryType.DOCKING_STATION:
         this.computer = new DockingStation(this.computer);

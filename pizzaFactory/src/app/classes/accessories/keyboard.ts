@@ -7,7 +7,7 @@ export class Keyboard extends ComputerAccessory {
     super();
     this.computer = computer;
     this.price = 150;
-    setTimeout(() => this.computer.log.setLog(`Adding ${this.getDescription()}`), 2000);
+    setTimeout(() => this.computer.log.setLog(`Adding keyboard`), 2000);
   }
 
   getPrice(): number {
@@ -15,7 +15,7 @@ export class Keyboard extends ComputerAccessory {
   }
 
   getDescription(): string {
-    return `Keyboard (${this.price} PLN)`;
+    return `${this.computer.getDescription()} Keyboard (${this.price} PLN)`;
   }
 
 }

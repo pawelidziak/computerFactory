@@ -8,10 +8,7 @@ import {Computer} from '../../classes/Computer';
   templateUrl: './factories.component.html',
   styleUrls: ['./factories.component.scss']
 })
-export class FactoriesComponent implements OnInit, OnChanges {
-  ngOnChanges(changes: SimpleChanges): void {
-    this.computerChange.emit(this.computer);
-  }
+export class FactoriesComponent implements OnInit {
   @Input() computer: Computer;
   @Output() computerChange = new EventEmitter();
 

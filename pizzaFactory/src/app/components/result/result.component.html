@@ -1,0 +1,15 @@
+<div class="result-container">
+  <header class="result-header">
+    <h3>RESULT</h3>
+  </header>
+  <div class="result-content">
+    <div class="desc">{{computer.getDescription()}}</div>
+
+    <div class="footer">
+      <div class="price">
+        Total price: {{computer.getPrice()}} PLN
+      </div>
+      <button mat-button color="warn" [disabled]="computer.getPrice() === 0">RESET</button>
+    </div>
+  </div>
+</div>

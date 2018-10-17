@@ -14,6 +14,6 @@ export class BusinessComputer extends Computer {
   }
 
   getDescription(): string {
-    return 'Business computer (3000)\n';
+    return `Business computer (${this.getPrice()} PLN)`;
   }
 }
