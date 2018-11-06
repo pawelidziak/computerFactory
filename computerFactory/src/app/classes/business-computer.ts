@@ -16,4 +16,8 @@ export class BusinessComputer extends Computer {
   getDescription(): string {
     return `Business computer (${this.getPrice()} PLN)`;
   }
+
+  toString = () : string => {
+    return `Business computer (serialNumber: ${this.serialNumber})`;
+  }
 }

@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterContentInit{
 
   ngOnInit() {
     this.log = new LogStation();
-
+    this.computer = new UnknownComputer();
   }
 
   ngOnDestroy() {
@@ -28,6 +28,5 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterContentInit{
   }
 
   ngAfterContentInit(): void {
-    this.computer = new UnknownComputer();
   }
 }

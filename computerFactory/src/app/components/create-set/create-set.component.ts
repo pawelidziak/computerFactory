@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Computer} from '../../classes/Computer';
 import {GamingComputer} from '../../classes/gaming-computer';
 import {BusinessComputer} from '../../classes/business-computer';
@@ -46,6 +46,7 @@ export class CreateSetComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
+
 
   public emitComputerChange() {
     this.computerChange.emit(this.computer);

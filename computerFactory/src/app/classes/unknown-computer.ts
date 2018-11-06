@@ -9,11 +9,14 @@ export class UnknownComputer extends Computer {
   }
 
   getPrice(): number {
-    return 0;
+    return 1000;
   }
 
   getDescription(): string {
-    return '';
+    return `Unknown computer (${this.getPrice()} PLN)`;
   }
 
+  toString = () : string => {
+    return `Unknown computer (serialNumber: ${this.serialNumber})`;
+  }
 }

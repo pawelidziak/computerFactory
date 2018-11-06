@@ -9,7 +9,9 @@
       <div class="price">
         Total price: {{computer.getPrice()}} PLN
       </div>
-      <button mat-button color="warn" [disabled]="computer.getPrice() === 0">RESET</button>
+      <button mat-button color="warn"
+              (click)="resetComputer()"
+              [disabled]="computer.getPrice() === 0">RESET</button>
     </div>
   </div>
 </div>

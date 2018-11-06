@@ -17,4 +17,8 @@ export class GamingComputer extends Computer {
     return `Gaming computer (${this.getPrice()} PLN)`;
   }
 
+  toString = () : string => {
+    return `Gaming computer (serialNumber: ${this.serialNumber})`;
+  }
+
 }

@@ -9,7 +9,6 @@ import {
 } from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
-import {PIZZA_SIZE} from './fake-db';
 import {DockingStation} from '../../classes/accessories/docking-station';
 import {UnknownComputer} from '../../classes/unknown-computer';
 import {Keyboard} from '../../classes/accessories/keyboard';

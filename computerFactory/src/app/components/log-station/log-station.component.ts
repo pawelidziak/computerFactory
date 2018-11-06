@@ -23,5 +23,4 @@ export class LogStationComponent implements OnInit, Observer {
   update(log: OneLog): void {
     this.logs.push(log);
   }
-
 }

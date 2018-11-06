@@ -14,9 +14,8 @@
       <button mat-button
               color="primary"
               *ngFor="let accessory of computerAccessories"
-              [disabled]="computer.type === 'UNKNOWN'"
               (click)="addAccessory(accessory.accessory)">
-        {{accessory.text}}
+        {{accessory.text.substr(28, accessory.text.length)}}
       </button>
     </div>
 

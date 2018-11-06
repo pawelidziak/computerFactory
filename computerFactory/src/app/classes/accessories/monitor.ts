@@ -6,15 +6,16 @@ export class Monitor extends ComputerAccessory {
   constructor(computer: Computer) {
     super();
     this.computer = computer;
-    this.price = 500;
-    setTimeout(() => this.computer.log.setLog(`Adding monitor`), 3000);
+    this.accessoryPrice = 500;
+    // setTimeout(() => this.computer.log.setLog(`Adding monitor`), 3000);
+    this.computer.log.setLog(`Adding monitor`);
   }
 
   getPrice(): number {
-    return this.computer.getPrice() + this.price;
+    return this.computer.getPrice() + this.accessoryPrice;
   }
 
   getDescription(): string {
-    return `${this.computer.getDescription()} Monitor (${this.price} PLN)`;
+    return `${this.computer.getDescription()} Monitor (${this.accessoryPrice} PLN)`;
   }
 }

@@ -8,6 +8,7 @@ export class GamingFactory extends ComputerFactory {
 
   constructor() {
     super();
+    console.log('Gaming Factory');
     this.computer = new GamingComputer();
     this.addAccessories();
   }

@@ -6,16 +6,18 @@ export class Keyboard extends ComputerAccessory {
   constructor(computer: Computer) {
     super();
     this.computer = computer;
-    this.price = 150;
-    setTimeout(() => this.computer.log.setLog(`Adding keyboard`), 2000);
+    this.accessoryPrice = 150;
+    // setTimeout(() => this.computer.log.setLog(`Adding keyboard`), 2000);
+    this.computer.log.setLog(`Adding keyboard`);
+
   }
 
   getPrice(): number {
-    return this.computer.getPrice() + this.price;
+    return this.computer.getPrice() + this.accessoryPrice;
   }
 
   getDescription(): string {
-    return `${this.computer.getDescription()} Keyboard (${this.price} PLN)`;
+    return `${this.computer.getDescription()} Keyboard (${this.accessoryPrice} PLN)`;
   }
 
 }

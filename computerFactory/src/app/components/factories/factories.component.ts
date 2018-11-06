@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GamingFactory} from '../../classes/factories/gaming-factory';
 import {BusinessFactory} from '../../classes/factories/business-factory';
 import {Computer} from '../../classes/Computer';

@@ -2,7 +2,7 @@ import {ComputerType} from './computer-type';
 import {LogStation} from './observer/log-station';
 
 export abstract class Computer {
-  serialNumver: number;
+  serialNumber: number;
   type: ComputerType;
   log: LogStation;
 
