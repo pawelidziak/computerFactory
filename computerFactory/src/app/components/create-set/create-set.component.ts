@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Computer} from '../../classes/Computer';
 import {GamingComputer} from '../../classes/gaming-computer';
 import {BusinessComputer} from '../../classes/business-computer';
@@ -16,7 +16,7 @@ import {CreateSetService} from './create-set.service';
   templateUrl: './create-set.component.html',
   styleUrls: ['./create-set.component.scss']
 })
-export class CreateSetComponent implements OnInit, OnChanges, OnDestroy {
+export class CreateSetComponent implements OnInit, OnDestroy {
   private subscriptions: any[] = [];
 
   @Input() computer: Computer;
@@ -47,13 +47,6 @@ export class CreateSetComponent implements OnInit, OnChanges, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if(changes.computer.currentValue.type){
-      this.selectedComputerType = changes.computer.currentValue.type
-    }
-    console.log(changes);
-  }
 
   public emitComputerChange() {
     this.computerChange.emit(this.computer);
