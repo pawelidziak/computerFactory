@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatButtonModule, MatListModule} from '@angular/material';
-import {LogStationComponent} from './log-station.component';
+import {OrdersComponent} from './orders.component';
 
 @NgModule({
   declarations: [
-    LogStationComponent
+    OrdersComponent
   ],
   imports: [
     CommonModule,
@@ -14,8 +14,8 @@ import {LogStationComponent} from './log-station.component';
     MatListModule,
   ],
   exports: [
-    LogStationComponent
+    OrdersComponent
   ]
 })
-export class LogStationModule {
+export class OrdersModule {
 }

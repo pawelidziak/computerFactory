@@ -1,14 +1,13 @@
-.log-container {
-  height: 250px;
+.orders-container {
+  height: 360px;
   overflow: auto;
-  margin-bottom: 24px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
   @media screen and (min-width: 1100px) {
     min-width: 500px;
   }
 }
 
-.log-header {
+.orders-header {
   background-color: rgba(0, 0, 0, .20);
 }
 
@@ -18,27 +17,33 @@
   }
 }
 
-.one-log {
+.one-order {
   color: rgba(0, 0, 0, .54);
   display: flex !important;
   align-items: center;
 }
 
-.log-info {
+.order-info {
   margin-right: 24px;
   font-size: 11px;
 }
 
-.one-log-inner {
+.one-order-inner {
   display: flex;
   flex-direction: column;
 }
 
-.log-text {
+.order-text {
   font-size: 13px;
 }
 
-.log-date {
+.order-date {
   margin-top: 6px;
   font-size: 11px;
+}
+
+.order-action{
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
 }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Computer} from '../../classes/Computer';
 import {GamingComputer} from '../../classes/gaming-computer';
 import {BusinessComputer} from '../../classes/business-computer';
@@ -7,9 +7,9 @@ import {DockingStation} from '../../classes/accessories/docking-station';
 import {Mouse} from '../../classes/accessories/mouse';
 import {Monitor} from '../../classes/accessories/monitor';
 import {Keyboard} from '../../classes/accessories/keyboard';
-import {HttpClient} from '@angular/common/http';
 import {AccessoryType} from '../../core/fake-backend/accessory.type';
 import {ComputerType} from '../../classes/computer-type';
+import {CreateSetService} from './create-set.service';
 
 @Component({
   selector: 'app-create-set',
@@ -31,12 +31,12 @@ export class CreateSetComponent implements OnInit, OnDestroy {
 
   public computerAccessories: any = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private createSetService: CreateSetService) {
   }
 
   ngOnInit() {
     this.subscriptions.push(
-      this.http.get('/computer-accessories').subscribe(
+      this.createSetService.getAccessories().subscribe(
         res => this.computerAccessories = res,
         error => console.log(error)
       )

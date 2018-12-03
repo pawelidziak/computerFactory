@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule, MatFormFieldModule, MatListModule, MatSelectModule} from '@angular/material';
 import {CreateSetComponent} from './create-set.component';
+import {CreateSetService} from './create-set.service';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,6 @@ import {CreateSetComponent} from './create-set.component';
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
 
     MatButtonModule,
     MatListModule,
@@ -19,6 +18,9 @@ import {CreateSetComponent} from './create-set.component';
   ],
   exports: [
     CreateSetComponent
+  ],
+  providers: [
+    CreateSetService
   ]
 })
 export class CreateSetModule {

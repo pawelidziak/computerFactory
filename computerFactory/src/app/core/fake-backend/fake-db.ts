@@ -11,18 +11,3 @@ export const PIZZA_TOPPINGS = [
   'chicken'
 ];
 
-export const PIZZA_MENU = [
-  {
-    position: 1,
-    toppings: [
-      'cheese'
-    ]
-  },
-  {
-    position: 2,
-    toppings: [
-      'cheese',
-      'ham'
-    ]
-  }
-];

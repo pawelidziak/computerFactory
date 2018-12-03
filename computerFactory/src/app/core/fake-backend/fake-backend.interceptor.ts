@@ -40,6 +40,21 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
       }
 
+      if (request.url.endsWith('/get-orders') && request.method === 'GET') {
+        request = request.clone({
+          url: '/assets/ORDERS.json'
+        });
+      }
+
+      if (request.url.endsWith('/save-orders') && request.method === 'POST') {
+        console.log(request);
+        if (this.saveToFile(request.body, 'ORDERS')) {
+          return of(new HttpResponse({status: 200}));
+        } else {
+          return throwError({error: {message: 'Not found'}});
+        }
+      }
+
       // pass through any requests not handled above
       return next.handle(request);
 
@@ -52,7 +67,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   }
 
 
-  private createAccessories() {
+  private createAccessories(): void {
     const comp = new UnknownComputer();
     const dockingStation = new DockingStation(comp);
     const keyboard = new Keyboard(comp);
@@ -63,8 +78,27 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     this.computerAccessories.push({text: keyboard.getDescription(), accessory: AccessoryType.KEYBOARD});
     this.computerAccessories.push({text: monitor.getDescription(), accessory: AccessoryType.MONITOR});
     this.computerAccessories.push({text: mouse.getDescription(), accessory: AccessoryType.MOUSE});
+  }
 
-    console.log(this.computerAccessories);
+
+  private saveToFile(data: any, filename: string): boolean {
+    filename = `${filename}.json`;
+    const file = new Blob([JSON.stringify(data)], {type: 'text/plain'});
+    if (window.navigator.msSaveOrOpenBlob) {// IE10+
+      return window.navigator.msSaveOrOpenBlob(file, filename);
+    } else { // Others
+      const a = document.createElement('a');
+      const url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      }, 0);
+      return true;
+    }
   }
 }
 

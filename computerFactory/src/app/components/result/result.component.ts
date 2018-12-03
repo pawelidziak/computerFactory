@@ -1,11 +1,15 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Computer} from '../../classes/Computer';
-import {UnknownComputer} from "../../classes/unknown-computer";
-import {Observer} from "../../classes/observer/observer";
-import {LogStation, OneLog} from "../../classes/observer/log-station";
-import {ComputerType} from "../../classes/computer-type";
-import {BusinessComputer} from "../../classes/business-computer";
-import {GamingComputer} from "../../classes/gaming-computer";
+import {UnknownComputer} from '../../classes/unknown-computer';
+import {LogStation} from '../../classes/observer/log-station';
+import {ComputerType} from '../../classes/computer-type';
+import {BusinessComputer} from '../../classes/business-computer';
+import {GamingComputer} from '../../classes/gaming-computer';
+
+export interface IOrder {
+  desc: string;
+  date: Date;
+}
 
 @Component({
   selector: 'app-result',
@@ -25,7 +29,7 @@ export class ResultComponent implements OnInit {
   ngOnInit() {
   }
 
-  resetComputer(): void {
+  public resetComputer(): void {
     this.subject.setLog(`Reset computer`);
     if (this.computer.getType() === ComputerType.BUSINESS) {
       this.computer = new BusinessComputer();
