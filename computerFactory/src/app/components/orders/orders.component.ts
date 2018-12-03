@@ -36,7 +36,7 @@ export class OrdersComponent implements OnInit {
     this.orders.push(order);
   }
 
-  public saveAsFile(): void{
+  public saveAsFile(): void {
     this.ordersService.saveOrders(this.orders).subscribe(
       error => console.log(error)
     );
