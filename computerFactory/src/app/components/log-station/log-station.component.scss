@@ -1,8 +1,12 @@
-.log-container {
-  height: 250px;
-  overflow: auto;
-  margin-bottom: 24px;
+.section-log-station {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
+}
+
+.log-container {
+  margin-bottom: 24px;
+  height: 360px;
+  max-width: 360px;
+  overflow: auto;
   @media screen and (min-width: 1100px) {
     min-width: 500px;
   }
@@ -10,18 +14,23 @@
 
 .log-header {
   background-color: rgba(0, 0, 0, .20);
-}
-
-.mat-list-item {
-  &:hover {
-    background-color: rgba(0, 0, 0, .10);
+  h3 {
+    padding: 16px;
+    margin: 0;
+    color: rgba(0, 0, 0, .54);
+    font-size: 14px;
+    font-weight: 500;
   }
 }
 
 .one-log {
+  padding: 12px;
   color: rgba(0, 0, 0, .54);
-  display: flex !important;
+  display: flex;
   align-items: center;
+  &:hover {
+    background-color: rgba(0, 0, 0, .10);
+  }
 }
 
 .log-info {
@@ -32,6 +41,8 @@
 .one-log-inner {
   display: flex;
   flex-direction: column;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .log-text {

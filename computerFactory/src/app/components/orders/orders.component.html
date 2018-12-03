@@ -1,29 +1,32 @@
-<section>
-  <mat-list class="orders-container">
-    <h3 mat-subheader class="orders-header">ORDERS HISTORY</h3>
-    <mat-list-item *ngFor="let order of orders">
-      <div mat-line class="one-order">
-        <code class="order-info">[order]</code>
-        <div class="one-order-inner">
-          <span class="order-text">{{order.desc}}</span>
-          <span class="order-date">{{order.date | date: 'dd.MM.yyy h:mm:ss'}}</span>
-        </div>
-      </div>
-    </mat-list-item>
-  </mat-list>
+<section class="section-orders">
+  <header class="orders-header">
+    <h3>ORDERS HISTORY</h3>
+  </header>
 
-  <div class="order-action">
-    <button mat-raised-button
-            color="primary"
-            (click)="makeOrder()"
-            [disabled]="computer.getPrice() === 0">
-      ORDER
-    </button>
-    <button mat-button
-            color="primary"
-            (click)="saveAsFile()"
-            [disabled]="orders?.length === 0">
-      Save as file
-    </button>
+  <div class="orders-container">
+
+
+    <div *ngFor="let order of orders" class="one-order">
+      <code class="order-info">[order]</code>
+      <div class="one-order-inner">
+        <span class="order-text">{{order.desc}}</span>
+        <span class="order-date">{{order.date | date: 'dd.MM.yyy HH:mm:ss'}}</span>
+      </div>
+    </div>
   </div>
 </section>
+
+<div class="order-action">
+  <button mat-raised-button
+          color="primary"
+          (click)="makeOrder()"
+          [disabled]="computer.getPrice() === 0">
+    ORDER
+  </button>
+  <button mat-button
+          color="primary"
+          (click)="saveAsFile()"
+          [disabled]="orders?.length === 0">
+    Save as file
+  </button>
+</div>

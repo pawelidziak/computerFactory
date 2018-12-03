@@ -1,7 +1,11 @@
+.section-orders {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
+}
+
 .orders-container {
   height: 360px;
+  max-width: 360px;
   overflow: auto;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(0, 0, 0, 0.23);
   @media screen and (min-width: 1100px) {
     min-width: 500px;
   }
@@ -9,18 +13,23 @@
 
 .orders-header {
   background-color: rgba(0, 0, 0, .20);
-}
-
-.mat-list-item {
-  &:hover {
-    background-color: rgba(0, 0, 0, .10);
+  h3 {
+    padding: 16px;
+    margin: 0;
+    color: rgba(0, 0, 0, .54);
+    font-size: 14px;
+    font-weight: 500;
   }
 }
 
 .one-order {
+  padding: 12px;
   color: rgba(0, 0, 0, .54);
-  display: flex !important;
+  display: flex;
   align-items: center;
+  &:hover {
+    background-color: rgba(0, 0, 0, .10);
+  }
 }
 
 .order-info {
@@ -31,6 +40,8 @@
 .one-order-inner {
   display: flex;
   flex-direction: column;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .order-text {
@@ -42,7 +53,7 @@
   font-size: 11px;
 }
 
-.order-action{
+.order-action {
   margin-top: 24px;
   display: flex;
   justify-content: flex-end;
