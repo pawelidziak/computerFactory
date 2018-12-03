@@ -47,7 +47,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       }
 
       if (request.url.endsWith('/save-orders') && request.method === 'POST') {
-        console.log(request);
         if (this.saveToFile(request.body, 'ORDERS')) {
           return of(new HttpResponse({status: 200}));
         } else {

@@ -38,7 +38,6 @@ export class OrdersComponent implements OnInit {
 
   public saveAsFile(): void{
     this.ordersService.saveOrders(this.orders).subscribe(
-      res => console.log(res),
       error => console.log(error)
     );
   }
