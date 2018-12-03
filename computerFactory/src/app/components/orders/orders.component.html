@@ -6,7 +6,7 @@
   <div class="orders-container">
 
 
-    <div *ngFor="let order of orders.slice().reverse()" class="one-order">
+    <div *ngFor="let order of orders?.slice().reverse()" class="one-order">
       <code class="order-info">[order]</code>
       <div class="one-order-inner">
         <span class="order-text">{{order.desc}}</span>
